@@ -1,26 +1,25 @@
 #include "lists.h"
 
 /**
- * print_list - prints the linked list
- * @h: pointer to the structure
- * Return: return the length 0f the list
- */
+ * print_list -function that prints all the elements of a list_t list.
+ * @h: the string
+ * Return: Always i (Success)
+*/
+
 size_t print_list(const list_t *h)
 {
-size_t length = 0;
+const list_t *cursor = h;
+size_t i = 0;
 
-if (h == NULL)
-return (0);
-while (h->next)
+while (cursor != NULL)
 {
-if (!h->str)
-printf("[0] %s\n", "(nil)");
+if (cursor->str != NULL)
+printf("[%d] %s\n", cursor->len, cursor->str);
 else
-printf("[%d] %s\n", h->len, h->str);
-h = h->next;
-length++;
+printf("[0] (nil)\n");
+i++;
+cursor = cursor->next;
 }
-length++;
-printf("[%d] %s\n", h->len, h->str);
-return (length);
+
+return (i);
 }
